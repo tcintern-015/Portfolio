@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aleesha Tariq — AI Engineer</title>
+<meta name="description" content="Aleesha Tariq — AI Engineering student and builder. BS AI @ BIIT, AI Development Intern @ Think & Code, founder of StudyPath PK.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #10131a;
+    --bg-raised: #161b24;
+    --bg-panel: #1a212c;
+    --border: #2a3341;
+    --border-soft: #232b37;
+    --text: #e8ecf1;
+    --text-dim: #8a94a6;
+    --text-faint: #545f70;
+    --accent: #4fc7b8;
+    --accent-dim: #35897e;
+    --amber: #e8a33d;
+    --amber-dim: #a8752a;
+    --live: #4fd67a;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -5%, rgba(79,199,184,0.08), transparent),
+      radial-gradient(ellipse 700px 400px at 90% 10%, rgba(232,163,61,0.05), transparent),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--font-display);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 28px; }
+
+  a{ color:inherit; text-decoration:none; }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(16,19,26,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border-soft);
+  }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:64px; }
+  .nav-logo{ font-family:var(--font-mono); font-weight:600; font-size:14px; letter-spacing:0.5px; color:var(--text); }
+  .nav-logo span{ color:var(--accent); }
+  .nav-links{ display:flex; gap:28px; font-size:14px; color:var(--text-dim); }
+  .nav-links a:hover{ color:var(--accent); }
+  .nav-links{ display:none; }
+  @media(min-width:720px){ .nav-links{ display:flex; } }
+
+  /* ---------- HERO ---------- */
+  header.hero{ padding:88px 0 56px; border-bottom:1px solid var(--border-soft); }
+  .eyebrow{
+    font-family:var(--font-mono); font-size:12.5px; color:var(--accent);
+    letter-spacing:1.5px; text-transform:uppercase; display:flex; align-items:center; gap:8px; margin-bottom:22px;
+  }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--live); box-shadow:0 0 8px var(--live); animation:pulse 2s infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+
+  h1.name{ font-size:clamp(38px, 6vw, 62px); font-weight:700; line-height:1.05; letter-spacing:-1.5px; }
+  h1.name .accent-text{ color:var(--accent); }
+
+  .role-line{ font-family:var(--font-mono); font-size:15px; color:var(--text-dim); margin-top:18px; max-width:640px; }
+  .role-line b{ color:var(--text); font-weight:500; }
+
+  .hero-tagline{ font-size:18px; color:var(--text-dim); max-width:560px; margin-top:20px; }
+
+  .hero-links{ display:flex; gap:14px; margin-top:32px; flex-wrap:wrap; }
+  .btn{
+    font-family:var(--font-mono); font-size:13.5px; padding:11px 20px; border-radius:6px;
+    border:1px solid var(--border); transition:all .15s ease; display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
+  .btn.primary{ background:var(--accent); border-color:var(--accent); color:#0a1512; font-weight:600; }
+  .btn.primary:hover{ background:#5fd6c6; color:#0a1512; }
+
+  /* ---------- STATUS PANEL ---------- */
+  .status-panel{
+    margin-top:44px; border:1px solid var(--border); border-radius:10px; overflow:hidden; background:var(--bg-panel);
+  }
+  .status-head{
+    padding:12px 18px; border-bottom:1px solid var(--border-soft); font-family:var(--font-mono);
+    font-size:11.5px; color:var(--text-faint); letter-spacing:1px; text-transform:uppercase;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .status-row{
+    display:flex; align-items:center; justify-content:space-between; padding:13px 18px;
+    border-bottom:1px solid var(--border-soft); font-family:var(--font-mono); font-size:13.5px;
+  }
+  .status-row:last-child{ border-bottom:none; }
+  .status-left{ display:flex; align-items:center; gap:12px; color:var(--text); }
+  .status-left .proj-desc{ color:var(--text-faint); font-size:12px; display:none; }
+  @media(min-width:600px){ .status-left .proj-desc{ display:inline; } }
+  .badge{
+    font-size:10.5px; padding:3px 9px; border-radius:20px; font-weight:600; letter-spacing:0.5px; white-space:nowrap;
+  }
+  .badge.live{ background:rgba(79,214,122,0.12); color:var(--live); border:1px solid rgba(79,214,122,0.3); }
+  .badge.build{ background:rgba(232,163,61,0.12); color:var(--amber); border:1px solid rgba(232,163,61,0.3); }
+  .status-dot{ width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+  .status-dot.live{ background:var(--live); box-shadow:0 0 6px var(--live); }
+  .status-dot.build{ background:var(--amber); }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding:64px 0; border-bottom:1px solid var(--border-soft); }
+  .section-tag{
+    font-family:var(--font-mono); font-size:12px; color:var(--accent); letter-spacing:1.5px;
+    text-transform:uppercase; margin-bottom:10px;
+  }
+  h2.section-title{ font-size:clamp(26px,3.5vw,34px); font-weight:700; letter-spacing:-0.5px; margin-bottom:36px; }
+
+  /* About */
+  .about-grid{ display:grid; gap:36px; }
+  @media(min-width:800px){ .about-grid{ grid-template-columns:1.3fr 1fr; } }
+  .about-text p{ color:var(--text-dim); font-size:16px; margin-bottom:16px; max-width:620px; }
+  .about-text b{ color:var(--text); font-weight:600; }
+
+  .info-box{ border:1px solid var(--border); border-radius:10px; background:var(--bg-raised); padding:22px; }
+  .info-row{ display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--border-soft); font-size:13.5px; }
+  .info-row:last-child{ border-bottom:none; }
+  .info-label{ font-family:var(--font-mono); color:var(--text-faint); }
+  .info-value{ color:var(--text); text-align:right; }
+
+  /* Skills */
+  .skills-grid{ display:grid; gap:16px; grid-template-columns:1fr; }
+  @media(min-width:640px){ .skills-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(min-width:980px){ .skills-grid{ grid-template-columns:repeat(3,1fr); } }
+  .skill-card{ border:1px solid var(--border); border-radius:10px; padding:20px; background:var(--bg-raised); }
+  .skill-card h3{ font-family:var(--font-mono); font-size:13px; color:var(--amber); text-transform:uppercase; letter-spacing:1px; margin-bottom:14px; }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{
+    font-family:var(--font-mono); font-size:12.5px; color:var(--text-dim); border:1px solid var(--border-soft);
+    padding:5px 10px; border-radius:5px; background:var(--bg-panel);
+  }
+
+  /* Projects */
+  .proj-grid{ display:grid; gap:20px; }
+  @media(min-width:760px){ .proj-grid{ grid-template-columns:repeat(2,1fr); } }
+  .proj-card{
+    border:1px solid var(--border); border-radius:12px; background:var(--bg-raised); padding:26px;
+    display:flex; flex-direction:column; transition:border-color .15s ease, transform .15s ease;
+  }
+  .proj-card:hover{ border-color:var(--accent-dim); transform:translateY(-2px); }
+  .proj-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:14px; }
+  .proj-num{ font-family:var(--font-mono); font-size:12px; color:var(--text-faint); }
+  .proj-card h3{ font-size:19px; font-weight:600; margin-bottom:10px; }
+  .proj-card p{ color:var(--text-dim); font-size:14.5px; margin-bottom:16px; flex-grow:1; }
+  .proj-stack{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:18px; }
+  .proj-stack span{
+    font-family:var(--font-mono); font-size:11px; color:var(--accent); background:rgba(79,199,184,0.08);
+    padding:3px 8px; border-radius:4px;
+  }
+  .proj-links{ display:flex; gap:10px; }
+  .proj-links a{
+    font-family:var(--font-mono); font-size:12.5px; color:var(--text-dim); border:1px solid var(--border);
+    padding:8px 14px; border-radius:6px; display:flex; align-items:center; gap:6px; transition:all .15s ease;
+  }
+  .proj-links a:hover{ border-color:var(--accent); color:var(--accent); }
+  .proj-links a.disabled{ opacity:0.4; pointer-events:none; }
+
+  /* Other projects - compact list */
+  .other-list{ display:grid; gap:14px; }
+  @media(min-width:760px){ .other-list{ grid-template-columns:repeat(2,1fr); } }
+  .other-card{ border:1px solid var(--border-soft); border-radius:10px; padding:18px 20px; background:var(--bg-panel); }
+  .other-card .row{ display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:6px; }
+  .other-card h4{ font-size:15px; font-weight:600; }
+  .other-card p{ color:var(--text-faint); font-size:13px; }
+  .other-card a{ font-family:var(--font-mono); font-size:11.5px; color:var(--accent); white-space:nowrap; }
+
+  /* Experience timeline */
+  .timeline{ position:relative; padding-left:28px; }
+  .timeline::before{ content:''; position:absolute; left:5px; top:6px; bottom:6px; width:1px; background:var(--border); }
+  .tl-item{ position:relative; padding-bottom:32px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{
+    content:''; position:absolute; left:-28px; top:5px; width:11px; height:11px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--accent);
+  }
+  .tl-date{ font-family:var(--font-mono); font-size:12px; color:var(--text-faint); margin-bottom:4px; }
+  .tl-item h4{ font-size:16.5px; font-weight:600; margin-bottom:4px; }
+  .tl-item .tl-org{ color:var(--accent); font-size:13.5px; margin-bottom:8px; }
+  .tl-item p{ color:var(--text-dim); font-size:14px; max-width:580px; }
+
+  /* Footer */
+  footer{ padding:56px 0 40px; }
+  .footer-grid{ display:flex; flex-direction:column; gap:24px; }
+  @media(min-width:640px){ .footer-grid{ flex-direction:row; justify-content:space-between; align-items:center; } }
+  .footer-links{ display:flex; gap:20px; flex-wrap:wrap; }
+  .footer-links a{ font-family:var(--font-mono); font-size:13.5px; color:var(--text-dim); }
+  .footer-links a:hover{ color:var(--accent); }
+  .footer-note{ font-family:var(--font-mono); font-size:12px; color:var(--text-faint); }
+
+  ::selection{ background:var(--accent); color:#0a1512; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-logo">aleesha<span>.tariq</span></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span> Open to internship / entry-level AI roles</div>
+    <h1 class="name">Aleesha Tariq</h1>
+    <div class="role-line">
+      <b>BS Artificial Intelligence</b> @ Barani Institute of Information &amp; Technology &nbsp;·&nbsp;
+      <b>AI Development Intern</b> @ Think &amp; Code
+    </div>
+    <p class="hero-tagline">
+      I build AI systems that Pakistani students actually use — from exam-prep chatbots to
+      career-counselling platforms — and right now I'm deep in backend engineering: FastAPI,
+      databases, auth, and LangChain.
+    </p>
+    <div class="hero-links">
+      <a class="btn primary" href="#projects">View Projects ↓</a>
+      <a class="btn" href="https://github.com/AleeshaTariq1" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn" href="https://www.linkedin.com/in/aleesha-tariq-82a672324" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="mailto:aleeshatariq.dev@gmail.com">Email</a>
+    </div>
+
+    <div class="status-panel">
+      <div class="status-head">
+        <span>// live systems — products I've shipped</span>
+        <span>uptime monitor</span>
+      </div>
+      <div class="status-row">
+        <div class="status-left">
+          <span class="status-dot live"></span>
+          <span>StudyPath PK</span>
+          <span class="proj-desc">— AI career counselling &amp; admissions platform</span>
+        </div>
+        <span class="badge live">LIVE</span>
+      </div>
+      <div class="status-row">
+        <div class="status-left">
+          <span class="status-dot live"></span>
+          <span>ECAT AI Study Bot</span>
+          <span class="proj-desc">— subject-wise MCQ prep &amp; Q&amp;A</span>
+        </div>
+        <span class="badge live">LIVE</span>
+      </div>
+      <div class="status-row">
+        <div class="status-left">
+          <span class="status-dot live"></span>
+          <span>MDCAT AI Study Bot</span>
+          <span class="proj-desc">— Roman Urdu supported chatbot</span>
+        </div>
+        <span class="badge live">LIVE</span>
+      </div>
+      <div class="status-row">
+        <div class="status-left">
+          <span class="status-dot build"></span>
+          <span>Internship Projects</span>
+          <span class="proj-desc">— Book API, AI Chat API, LangChain Assistant</span>
+        </div>
+        <span class="badge build">IN PROGRESS</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-tag">// 01 — about</div>
+    <h2 class="section-title">About me</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a <b>BS Artificial Intelligence</b> student at Barani Institute of Information and
+          Technology (Class of 2027), currently working as an <b>AI Development Intern</b> at
+          Think &amp; Code's 2026 AI Internship Program, where I'm building production-style
+          backend systems with FastAPI, databases, authentication, and LangChain.
+        </p>
+        <p>
+          Outside the internship, I founded <b>StudyPath PK</b>, an AI-powered career counselling
+          and university admissions platform for Pakistani FSc students, and built AI study bots
+          for <b>ECAT and MDCAT</b> exam preparation — both handling real student traffic while
+          I'm still in university.
+        </p>
+        <p>
+          I was also selected for the <b>Aspire Leaders Program</b>, a globally competitive
+          leadership program with a curriculum designed and delivered by Harvard University
+          faculty, and I previously served as General Secretary of the BIIT AI Society.
+        </p>
+      </div>
+      <div class="info-box">
+        <div class="info-row"><span class="info-label">Location</span><span class="info-value">Rawalpindi, Pakistan</span></div>
+        <div class="info-row"><span class="info-label">Education</span><span class="info-value">BS AI, BIIT (2023–2027)</span></div>
+        <div class="info-row"><span class="info-label">Current Role</span><span class="info-value">AI Dev Intern @ Think &amp; Code</span></div>
+        <div class="info-row"><span class="info-label">Languages</span><span class="info-value">Urdu (Native), English</span></div>
+        <div class="info-row"><span class="info-label">Email</span><span class="info-value">aleeshatariq.dev@gmail.com</span></div>
+        <div class="info-row"><span class="info-label">Phone</span><span class="info-value">+92-328-6456910</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-tag">// 02 — skills</div>
+    <h2 class="section-title">Technical toolkit</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Backend &amp; APIs</h3>
+        <div class="chip-row">
+          <span class="chip">FastAPI</span><span class="chip">Pydantic</span><span class="chip">SQLAlchemy</span>
+          <span class="chip">SQLite</span><span class="chip">JWT Auth</span><span class="chip">REST APIs</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>AI / LLM Engineering</h3>
+        <div class="chip-row">
+          <span class="chip">LangChain</span><span class="chip">LCEL</span><span class="chip">Prompt Engineering</span>
+          <span class="chip">LLM APIs</span><span class="chip">NLP</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Machine Learning</h3>
+        <div class="chip-row">
+          <span class="chip">Deep Learning</span><span class="chip">CNN</span><span class="chip">Computer Vision</span>
+          <span class="chip">Scikit-learn</span><span class="chip">OpenCV</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Languages</h3>
+        <div class="chip-row">
+          <span class="chip">Python</span><span class="chip">Java</span><span class="chip">C++</span>
+          <span class="chip">C#</span><span class="chip">SQL</span><span class="chip">Dart</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Mobile &amp; Product</h3>
+        <div class="chip-row">
+          <span class="chip">Flutter</span><span class="chip">Firebase</span><span class="chip">Figma</span>
+          <span class="chip">State Mgmt</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Automation &amp; Tools</h3>
+        <div class="chip-row">
+          <span class="chip">n8n</span><span class="chip">Workato</span><span class="chip">WhatsApp API</span>
+          <span class="chip">Google Sheets API</span><span class="chip">Git</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-tag">// 03 — internship projects</div>
+    <h2 class="section-title">Major projects — Think &amp; Code Internship</h2>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-top"><span class="proj-num">01</span></div>
+        <h3>AI Chat API</h3>
+        <p>
+          A FastAPI backend integrating an LLM API into a <code>/chat</code> endpoint — handles
+          prompt structuring, error handling, and keeps API keys secure via environment variables.
+        </p>
+        <div class="proj-stack"><span>FastAPI</span><span>OpenAI API</span><span>python-dotenv</span></div>
+        <div class="proj-links">
+          <a href="https://github.com/AleeshaTariq1" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="#" class="disabled">Live Demo — Coming Soon</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top"><span class="proj-num">02</span></div>
+        <h3>Book Management API</h3>
+        <p>
+          A full CRUD REST API that evolved through the internship — from an in-memory Student
+          API into a SQLite-backed Book API with JWT authentication, password hashing, and
+          user-owned resources.
+        </p>
+        <div class="proj-stack"><span>FastAPI</span><span>SQLAlchemy</span><span>SQLite</span><span>JWT</span></div>
+        <div class="proj-links">
+          <a href="https://github.com/AleeshaTariq1" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="#" class="disabled">Live Demo — Coming Soon</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top"><span class="proj-num">03</span></div>
+        <h3>LangChain AI Assistant</h3>
+        <p>
+          A multi-persona AI assistant (Teacher, Career Advisor, Code Reviewer) built with
+          LangChain, refactored into clean LCEL chains — <code>prompt | model | parser</code> —
+          for reusable, composable AI pipelines.
+        </p>
+        <div class="proj-stack"><span>LangChain</span><span>LCEL</span><span>Prompt Templates</span></div>
+        <div class="proj-links">
+          <a href="https://github.com/AleeshaTariq1" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="#" class="disabled">Live Demo — Coming Soon</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top"><span class="proj-num">04</span></div>
+        <h3>This Portfolio</h3>
+        <p>
+          A single-file, hand-styled portfolio site documenting my internship journey — built to
+          be updated continuously as new projects and features ship.
+        </p>
+        <div class="proj-stack"><span>HTML/CSS</span><span>Vanilla JS</span></div>
+        <div class="proj-links">
+          <a href="https://github.com/AleeshaTariq1" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://ialeeshatariq.tech" target="_blank" rel="noopener">Live Site ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="other-projects">
+  <div class="wrap">
+    <div class="section-tag">// 04 — beyond the internship</div>
+    <h2 class="section-title">Other things I've built</h2>
+    <div class="other-list">
+      <div class="other-card">
+        <div class="row"><h4>StudyPath PK</h4><a href="https://studypath-pk.me" target="_blank" rel="noopener">studypath-pk.me ↗</a></div>
+        <p>AI career counsellor, merit calculator, 20+ university HEC database, and test-prep tools for FSc students.</p>
+      </div>
+      <div class="other-card">
+        <div class="row"><h4>ECAT / MDCAT AI Study Bot</h4><a href="https://ecat-bot.vercel.app" target="_blank" rel="noopener">ecat-bot.vercel.app ↗</a></div>
+        <p>Subject-wise MCQ practice and contextual Q&amp;A across Physics, Math, Chemistry &amp; English, with Roman Urdu support.</p>
+      </div>
+      <div class="other-card">
+        <div class="row"><h4>Facial Emotion Recognition</h4><span class="footer-note" style="color:var(--text-faint)">Python · OpenCV · CNN</span></div>
+        <p>Real-time CNN classifier detecting 5 emotion categories from a live webcam feed.</p>
+      </div>
+      <div class="other-card">
+        <div class="row"><h4>Netflix Stock Price Prediction</h4><span class="footer-note" style="color:var(--text-faint)">Python · NLP · ML</span></div>
+        <p>NLP sentiment pipeline fusing financial news and social data with prices to forecast trends.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-tag">// 05 — experience</div>
+    <h2 class="section-title">Experience &amp; leadership</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">Jul 2026 — Present</div>
+        <h4>AI Development Intern</h4>
+        <div class="tl-org">Think &amp; Code — AI Internship Program 2026</div>
+        <p>Selected for a competitive AI internship program; building production-oriented backend and AI-integration features alongside the engineering team.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2026</div>
+        <h4>Founder &amp; Developer</h4>
+        <div class="tl-org">StudyPath PK</div>
+        <p>Designed, built, and deployed an AI career-counselling platform now serving real Pakistani FSc students.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2026 — Expected Sep 2026</div>
+        <h4>Aspire Leaders Program, Cohort 3</h4>
+        <div class="tl-org">Aspire Institute (Harvard-designed curriculum)</div>
+        <p>Selected from 195+ countries for a global leadership development program covering professional skills and community-impact projects.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Nov 2024 — Feb 2026</div>
+        <h4>General Secretary</h4>
+        <div class="tl-org">BIIT AI Society</div>
+        <p>Coordinated society activities, managed communications, and led AI-focused events over a 16-month term.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="nav-logo" style="margin-bottom:6px;">aleesha<span>.tariq</span></div>
+        <div class="footer-note">Rawalpindi, Pakistan · Building AI systems, one internship task at a time.</div>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:aleeshatariq.dev@gmail.com">Email</a>
+        <a href="https://github.com/AleeshaTariq1" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/aleesha-tariq-82a672324" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal sections as they scroll into view
+  const sections = document.querySelectorAll('section, header.hero');
+  sections.forEach(s => { s.style.opacity = 0; s.style.transform = 'translateY(14px)'; s.style.transition = 'opacity .5s ease, transform .5s ease'; });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = 1;
+        e.target.style.transform = 'translateY(0)';
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  sections.forEach(s => io.observe(s));
+</script>
+
+</body>
+</html>
